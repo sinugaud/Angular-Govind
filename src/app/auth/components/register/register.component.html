@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>User Registration</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>User Registration</h1>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="firstName">First Name*</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName"
+                                    formControlName="firstName">
+                                <small
+                                    *ngIf="registrationForm.get('firstName')?.hasError('required') && registrationForm.get('firstName')?.touched"
+                                    class="red">
+                                    First Name is required
+                                </small>
+                                <small
+                                    *ngIf="registrationForm.get('firstName')?.hasError('pattern') && registrationForm.get('firstName')?.touched"
+                                    class="red">
+                                    Please enter a valid First Name (only alphabets)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="middlename">Middle Name</label>
+                                <input type="text" class="form-control" id="middleName" name="middleName"
+                                    formControlName="middleName">
+                                <small
+                                    *ngIf="registrationForm.get('middleName')?.hasError('pattern') && registrationForm.get('middleName')?.touched"
+                                    class="red">
+                                    Please enter a valid Middle Name (only alphabets)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name*</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                    formControlName="lastName">
+                                <small
+                                    *ngIf="registrationForm.get('lastName')?.hasError('required') && registrationForm.get('lastName')?.touched"
+                                    class="red">
+                                    Last Name is required
+                                </small>
+                                <small
+                                    *ngIf="registrationForm.get('lastName')?.hasError('pattern') && registrationForm.get('lastName')?.touched"
+                                    class="red">
+                                    Please enter a valid last Name (only alphabets)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateofbirth">Date of Birth*</label>
+                                <input type="date" class="form-control" id="dateofbirth" name="dateofbirth"
+                                    formControlName="dateOfBirth">
+                                <small
+                                    *ngIf="registrationForm.get('dateOfBirth')?.hasError('required') && registrationForm.get('dateOfBirth')?.touched"
+                                    class="red">
+                                    Dateofbirth is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address*</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    formControlName="address">
+                                <small
+                                    *ngIf="registrationForm.get('address')?.hasError('required') && registrationForm.get('address')?.touched"
+                                    class="red">
+                                    address is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City*</label>
+                                <input type="text" class="form-control" id="city" name="city" formControlName="city">
+                                <small
+                                    *ngIf="registrationForm.get('city')?.hasError('required') && registrationForm.get('city')?.touched"
+                                    class="red">
+                                    city is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State*</label>
+                                <input type="text" class="form-control" id="state" name="state" formControlName="state">
+                                <small
+                                    *ngIf="registrationForm.get('state')?.hasError('required') && registrationForm.get('state')?.touched"
+                                    class="red">
+                                    State is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country*</label>
+                                <input type="text" class="form-control" id="country" name="country"
+                                    formControlName="country">
+                                <small
+                                    *ngIf="registrationForm.get('country')?.hasError('required') && registrationForm.get('country')?.touched"
+                                    class="red">
+                                    Country is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode">Zip Code*</label>
+                                <input type="text" class="form-control" id="zipcode" name="zipcode" formControlName="zipcode">
+                                <small *ngIf="registrationForm.get('zipcode')?.hasError('required') && registrationForm.get('zipcode')?.touched"
+                                    class="red">
+                                    Zipcode is required
+                                </small>
+                                <small *ngIf="registrationForm.get('zipcode')?.hasError('pattern') && registrationForm.get('zipcode')?.touched"
+                                    class="red">
+                                    Zipcode should contain only digits
+                                </small>
+                                <small *ngIf="registrationForm.get('zipcode')?.hasError('minlength') && registrationForm.get('zipcode')?.touched"
+                                    class="red">
+                                    Zipcode should be at least 6 digits long
+                                </small>
+                                <small *ngIf="registrationForm.get('zipcode')?.hasError('maxlength') && registrationForm.get('zipcode')?.touched"
+                                    class="red">
+                                    Zipcode should not exceed 6 digits
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    formControlName="email">
+                                <div *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched"
+                                    class="red">
+                                    Email is required
+                                </div>
+                                <div *ngIf="registrationForm.get('email')?.hasError('email') && registrationForm.get('email')?.touched"
+                                    class="red">
+                                    Please enter a valid email address
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username*</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                    formControlName="username">
+                                <small
+                                    *ngIf="registrationForm.controls['username'].invalid && registrationForm.controls['username'].touched"
+                                    class="red">
+                                    Username is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password*</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    formControlName="password">
+                                <small
+                                    *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched"
+                                    class="red">
+                                    Password is required
+                                </small>
+                                <small class="red"
+                                    *ngIf="registrationForm.controls['password'].errors && registrationForm.controls['password'].errors['minlength']">
+                                    Please enter minimum length 8
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password*</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                    formControlName="confirmPassword">
+                                <div *ngIf="registrationForm.controls['confirmPassword']?.touched && registrationForm.controls['confirmPassword']?.invalid"
+                                    class="red">
+                                    <div *ngIf="registrationForm.controls['confirmPassword']?.errors?.['required']">
+                                        Password is required.</div>
+                                    <div
+                                        *ngIf="registrationForm.controls['confirmPassword']?.errors?.['confirmedValidator']">
+                                        Password and
+                                        Confirm Password must match.</div>
+                                </div>
+                            </div>
+                            <p>If you are already registered, you can log in directly!</p>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary mr-3"
+                                    [disabled]="registrationForm.invalid">Submit</button>
+                                <button type="botton" class="btn btn-outline-success mr-3">Login</button>
+                                <button type="button" class="btn btn-secondary ml-2" (click)="reset()">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
